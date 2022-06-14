@@ -1,0 +1,177 @@
+.navigation{
+    border-bottom: 0.6px solid rgb(190, 190, 190);
+    height: 4rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.nav{
+    position: relative;
+
+    &__item{
+        float: left;
+        @include nav-style;
+
+        &--right{
+            float: right;
+            @include nav-style;
+
+             &:not(:first-child){
+                margin-right: 1.5rem;
+           }
+       }
+        &--link{
+            display: block;
+            margin-left: 2rem;
+            text-decoration: none;
+            color: black;
+       }
+        &--image{
+            height: 4rem;
+            float: left;
+            z-index: 10;
+            position: relative;
+       }
+   }
+}
+.hamburger{
+    float: right;
+    display: none;
+
+    &__check{
+        display: none;
+        overflow: hidden;
+    }
+    &__label{
+        @include nav-width-height;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 3rem;
+
+            &--1, &--2, &--3{
+                width: 3rem;
+                height: 3px;
+                display: block; 
+                background-color: rgb(0, 0, 0);
+                    &:not(:last-child){
+                        margin-bottom: 0.5rem;
+
+            }
+        }
+    }
+
+    &__background{
+        @include nav-width-height;
+        background-color: transparent;
+        position: absolute;
+        top: 0.5rem;
+        right: 3rem;
+        z-index: -1;
+        transition: all .6s;
+    }
+}
+// Behavior of the hambuurger menu:
+.hamburger__check:checked ~ .hamburger__background{
+    position: relative;
+    background-color: #0040ff;
+    transform: scale(90, 27);
+    z-index: 1;
+}
+
+.hamburger__check:checked + .hamburger__label .hamburger__label--1{
+   transform: rotate(45deg);
+   z-index: 10;
+   position: relative;
+   top: 0.7rem;
+}
+
+.hamburger__check:checked + .hamburger__label .hamburger__label--2{
+    display: none;
+ }
+
+ .hamburger__check:checked + .hamburger__label .hamburger__label--3{
+    transform: rotate(-45deg);
+    z-index: 10;
+    position: relative;
+ }
+ .navigation2__nav{
+     display: none;
+ }
+ .hamburger__check:checked ~ .navigation2__nav{
+     display: block;
+     z-index: 10000;
+     position: relative;
+     color: white;
+
+ }
+ // The subgrid in the hamburger menue
+ .hamburger__check:checked ~  .navigation__grid{
+        opacity: 1;  
+    z-index: 10000;
+     position: relative;
+     display: grid;
+}
+
+.dropdown{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    padding: 2rem 1rem 2rem 1rem;
+    grid-gap: 20px;
+    top: 4rem;
+    position: absolute;
+    background-color: #0040ff;
+    color: white;
+
+        &---sub-title{
+            font-size: 1.7rem;
+            color: white;
+
+    }
+    
+}
+
+.nav__item:hover + .dropdown{
+    visibility: visible;
+    opacity: 1;
+    transition: all .5s;
+
+
+}
+.More:hover{
+    color: orange;
+    text-decoration: underline;
+    transition: all .5s;
+}
+
+.navigation2__item{
+    list-style: none;
+    margin-left: 2rem;
+}
+
+.navigation2__nav{
+    margin-right: 10rem;
+}
+.navigation2__link{
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+.navigation__grid{
+    opacity: 0;
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    &--item{
+        color: white;
+        margin-top: 2rem;
+        margin-left: 2rem;
+
+    }
+}

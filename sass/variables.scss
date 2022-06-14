@@ -1,0 +1,12 @@
+body, html{
+    font-family: 'Jost', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+img:not(.nav__item--image, .body4__item--1-image, .foot__item--grid-img){
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
